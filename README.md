@@ -4,8 +4,10 @@
 
 | File name | Description |
 |--- | --- |
-|main.py | Tic Toc Toe game with GUI |
+|calculator.py | simple calculator program |
+|ticktactoe.py | Tic Tac Toe game with GUI |
 
 
 
 ![calculator](calculator.png)
+![tic tac toe](tictactoe.png)
