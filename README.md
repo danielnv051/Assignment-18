@@ -10,5 +10,5 @@
 
 
 ![calculator](calculator.png)
-\n
+<br />
 ![tic tac toe](tictactoe.png)
