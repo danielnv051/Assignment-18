@@ -170,7 +170,6 @@ class Ui_Form(object):
         font2.setPointSize(11)
         self.vsplayer.setFont(font2)
         self.vsplayer.setLayoutDirection(Qt.RightToLeft)
-        self.vsplayer.setChecked(True)
 
         self.gridLayout.addWidget(self.vsplayer, 4, 0, 1, 2)
 
@@ -178,6 +177,7 @@ class Ui_Form(object):
         self.vscomputer.setObjectName(u"vscomputer")
         self.vscomputer.setFont(font2)
         self.vscomputer.setLayoutDirection(Qt.RightToLeft)
+        self.vscomputer.setChecked(False)
 
         self.gridLayout.addWidget(self.vscomputer, 4, 4, 1, 1)
 

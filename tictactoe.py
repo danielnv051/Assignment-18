@@ -1,15 +1,16 @@
+#import libraries
 import sys
 import random
 from functools import partial
-
 from PySide6.QtWidgets import QApplication, QMessageBox
 from PySide6.QtUiTools import QUiLoader
 
+#variables
 player = 1
 move = 0
 btn_list = []
 
-
+#define functions
 def show_winner(game_board, symbol):
     global move
     winner = ""
@@ -96,7 +97,6 @@ def show_winner(game_board, symbol):
 
     return winner
 
-
 def reset_game(game_board):
     global move
     move = 0
@@ -107,6 +107,10 @@ def reset_game(game_board):
     window.xsign.setStyleSheet("image: url(X.png);")
     window.osign.setStyleSheet("image: url(o1.png);")
 
+def clear_data():
+    reset_game(buttons)
+    window.Oscore.setText('0')
+    window.Xscore.setText('0')
 
 def num_to_i_j(num):
     global ij
@@ -133,9 +137,9 @@ def num_to_i_j(num):
 
     return ij
 
-
 def play(i, j, mode):
     global player, move, btn_list
+
 
     if i == 0 and j == 0:
         btn_list.append(1)
@@ -264,7 +268,6 @@ def play(i, j, mode):
             player = 1
     move += 1
 
-
 def return_game():
     win.hide()
     window.show()
@@ -273,22 +276,18 @@ def return_game():
         for j in range(3):
             button[i][j].setStyleSheet("color:silver")
 
-
 def mode(mode):
     for i in range(3):
         for j in range(3):
             buttons[i][j].clicked.connect(partial(play, i, j, mode))
 
-
+#app & loader & ui 
 loader = QUiLoader()
 app = QApplication([])
 window = loader.load("ui.ui")
 win = loader.load("winner.ui")
 
-window.vscomputer.clicked.connect(partial(mode, mode="vscomputer"))
-window.vsplayer.clicked.connect(partial(mode, mode="vsplayer"))
-win.new_game.clicked.connect(return_game)
-
+#buttons
 buttons = [
     [
         window.btn_1,
@@ -325,6 +324,12 @@ button = [
     ],
 ]
 
+#connect bottuns to functions
+win.new_game.clicked.connect(return_game)
+window.restart.clicked.connect(clear_data)
+window.vscomputer.clicked.connect(partial(mode, mode="vscomputer"))
+window.vsplayer.clicked.connect(partial(mode, mode="vsplayer"))
+window.vsplayer.click()
 
 window.show()
 app.exec()
