@@ -1,16 +1,17 @@
-#import libraries
+# import libraries
 import sys
 import random
 from functools import partial
 from PySide6.QtWidgets import QApplication, QMessageBox
 from PySide6.QtUiTools import QUiLoader
 
-#variables
+# variables
 player = 1
 move = 0
 btn_list = []
 
-#define functions
+
+# define functions
 def show_winner(game_board, symbol):
     global move
     winner = ""
@@ -98,19 +99,23 @@ def show_winner(game_board, symbol):
     return winner
 
 def reset_game(game_board):
-    global move
+    global move, player, btn_list
     move = 0
+    window.mov.setText("0")
+    window.same.setText("0")
     for i in range(3):
         for j in range(3):
             game_board[i][j].setText("")
             game_board[i][j].setStyleSheet("background: #cacaca;color:transparent")
     window.xsign.setStyleSheet("image: url(X.png);")
     window.osign.setStyleSheet("image: url(o1.png);")
+    player = 1
+    btn_list = []
 
 def clear_data():
     reset_game(buttons)
-    window.Oscore.setText('0')
-    window.Xscore.setText('0')
+    window.Oscore.setText("0")
+    window.Xscore.setText("0")
 
 def num_to_i_j(num):
     global ij
@@ -137,10 +142,8 @@ def num_to_i_j(num):
 
     return ij
 
-def play(i, j, mode):
-    global player, move, btn_list
-
-
+def i_j_to_num(i, j):
+    global btn_list
     if i == 0 and j == 0:
         btn_list.append(1)
     if i == 0 and j == 1:
@@ -160,6 +163,10 @@ def play(i, j, mode):
     if i == 2 and j == 2:
         btn_list.append(9)
 
+def play(i, j, mode):
+    global player, move, btn_list
+
+    window.vs.setText(mode) 
     if mode == "vsplayer":
         if player == 1:
             buttons[i][j].setStyleSheet(
@@ -178,11 +185,14 @@ def play(i, j, mode):
                 window.Xscore.setText(str(xscore))
                 reset_game(buttons)
                 player = 1
-            elif move == 9 and w == "XO":
+            elif move == 8 and w == "XO":
                 q = QMessageBox(text="مساوی")
                 q.show()
                 q.exec()
                 reset_game(buttons)
+                sam = int(window.same.text())
+                sam +=1
+                window.same.setText(str(sam))
                 player = 1
             else:
                 player = 2
@@ -208,9 +218,14 @@ def play(i, j, mode):
                 q.show()
                 q.exec()
                 reset_game(buttons)
+                sam = int(window.same.text())
+                sam +=1
+                window.same.setText(str(sam))
             else:
                 player = 1
     elif mode == "vscomputer":
+        i_j_to_num(i, j)
+
         if player == 1:
             buttons[i][j].setStyleSheet(
                 "background: #cacaca url(X1.png) center center no-repeat;color:transparent"
@@ -228,19 +243,20 @@ def play(i, j, mode):
                 window.Xscore.setText(str(xscore))
                 reset_game(buttons)
                 player = 1
-            elif move == 9 and w == "XO":
+            elif move == 8 and w == "XO":
                 q = QMessageBox(text="مساوی")
                 q.show()
                 q.exec()
+                sam = int(window.same.text())
+                sam +=1
+                window.same.setText(str(sam))
                 reset_game(buttons)
-                player = 2
+            player = 2
         elif player == 2:
             rnd = random.randint(1, 9)
             while rnd in btn_list:
                 rnd = random.randint(1, 9)
-            a = QMessageBox(text=rnd)
-            a.show()
-            a.exec()
+            btn_list.append(rnd)
             i_j = num_to_i_j(rnd)
 
             buttons[i_j[0]][i_j[1]].setStyleSheet(
@@ -249,6 +265,7 @@ def play(i, j, mode):
             window.xsign.setStyleSheet("image: url(X.png);")
             window.osign.setStyleSheet("image: url(o1.png);")
             buttons[i_j[0]][i_j[1]].setText("O")
+
             w = show_winner(buttons, "O")
             if w == "O":
                 win.result.setText("برنده : کامپیوتر")
@@ -263,10 +280,13 @@ def play(i, j, mode):
                 q = QMessageBox(text="مساوی")
                 q.show()
                 q.exec()
+                sam = int(window.same.text())
+                sam +=1
+                window.same.setText(str(sam))
                 reset_game(buttons)
-
             player = 1
-    move += 1
+    move +=1
+    window.mov.setText(str(move))
 
 def return_game():
     win.hide()
@@ -277,17 +297,23 @@ def return_game():
             button[i][j].setStyleSheet("color:silver")
 
 def mode(mode):
-    for i in range(3):
-        for j in range(3):
-            buttons[i][j].clicked.connect(partial(play, i, j, mode))
+    clear_data()
+    for k in range(3):
+        for l in range(3):
+            buttons[k][l].clicked.connect(partial(play, k, l, mode))
 
-#app & loader & ui 
+def about():
+    a = QMessageBox(text=".::بازی تیک تاک تو::.\nاین بازی توسط دانیال نواری جهت تمرین شماره 18 طراحی شده است")
+    a.show()
+    a.exec()
+
+# app & loader & ui
 loader = QUiLoader()
 app = QApplication([])
 window = loader.load("ui.ui")
 win = loader.load("winner.ui")
 
-#buttons
+# buttons
 buttons = [
     [
         window.btn_1,
@@ -324,12 +350,16 @@ button = [
     ],
 ]
 
-#connect bottuns to functions
+# connect bottuns to functions
 win.new_game.clicked.connect(return_game)
+window.about.clicked.connect(about)
 window.restart.clicked.connect(clear_data)
 window.vscomputer.clicked.connect(partial(mode, mode="vscomputer"))
 window.vsplayer.clicked.connect(partial(mode, mode="vsplayer"))
 window.vsplayer.click()
+
+window.vs.hide()
+window.mov.hide()
 
 window.show()
 app.exec()

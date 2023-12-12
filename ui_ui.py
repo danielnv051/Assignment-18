@@ -25,13 +25,13 @@ class Ui_Form(object):
             Form.setObjectName(u"Form")
         Form.setWindowModality(Qt.ApplicationModal)
         Form.setEnabled(True)
-        Form.resize(368, 337)
+        Form.resize(368, 431)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(Form.sizePolicy().hasHeightForWidth())
         Form.setSizePolicy(sizePolicy)
-        Form.setMinimumSize(QSize(368, 337))
+        Form.setMinimumSize(QSize(368, 431))
         Form.setBaseSize(QSize(0, -1))
         Form.setCursor(QCursor(Qt.ArrowCursor))
         Form.setAcceptDrops(False)
@@ -52,16 +52,18 @@ class Ui_Form(object):
         font.setPointSize(20)
         self.Xscore.setFont(font)
         self.Xscore.setLayoutDirection(Qt.RightToLeft)
+        self.Xscore.setStyleSheet(u"color: rgb(0, 0, 255);")
         self.Xscore.setAlignment(Qt.AlignCenter)
 
         self.gridLayout.addWidget(self.Xscore, 0, 1, 1, 1)
 
-        self.label_4 = QLabel(Form)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setFont(font)
-        self.label_4.setAlignment(Qt.AlignCenter)
+        self.same = QLabel(Form)
+        self.same.setObjectName(u"same")
+        self.same.setFont(font)
+        self.same.setStyleSheet(u"color: rgb(0, 170, 0);")
+        self.same.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout.addWidget(self.label_4, 0, 2, 1, 1)
+        self.gridLayout.addWidget(self.same, 0, 2, 1, 1)
 
         self.Oscore = QLabel(Form)
         self.Oscore.setObjectName(u"Oscore")
@@ -89,7 +91,7 @@ class Ui_Form(object):
         font1.setBold(True)
         self.btn_1.setFont(font1)
 
-        self.gridLayout.addWidget(self.btn_1, 1, 0, 1, 2)
+        self.gridLayout.addWidget(self.btn_1, 1, 0, 1, 1)
 
         self.btn_2 = QPushButton(Form)
         self.btn_2.setObjectName(u"btn_2")
@@ -98,7 +100,7 @@ class Ui_Form(object):
         self.btn_2.setFont(font1)
         self.btn_2.setStyleSheet(u"color: rgb(35, 31, 32);")
 
-        self.gridLayout.addWidget(self.btn_2, 1, 2, 1, 2)
+        self.gridLayout.addWidget(self.btn_2, 1, 1, 1, 3)
 
         self.btn_3 = QPushButton(Form)
         self.btn_3.setObjectName(u"btn_3")
@@ -116,7 +118,7 @@ class Ui_Form(object):
         self.btn_4.setFont(font1)
         self.btn_4.setStyleSheet(u"color: rgb(35, 31, 32);")
 
-        self.gridLayout.addWidget(self.btn_4, 2, 0, 1, 2)
+        self.gridLayout.addWidget(self.btn_4, 2, 0, 1, 1)
 
         self.btn_5 = QPushButton(Form)
         self.btn_5.setObjectName(u"btn_5")
@@ -125,7 +127,7 @@ class Ui_Form(object):
         self.btn_5.setFont(font1)
         self.btn_5.setStyleSheet(u"color: rgb(35, 31, 32);")
 
-        self.gridLayout.addWidget(self.btn_5, 2, 2, 1, 2)
+        self.gridLayout.addWidget(self.btn_5, 2, 1, 1, 3)
 
         self.btn_6 = QPushButton(Form)
         self.btn_6.setObjectName(u"btn_6")
@@ -143,7 +145,7 @@ class Ui_Form(object):
         self.btn_7.setFont(font1)
         self.btn_7.setStyleSheet(u"color: rgb(35, 31, 32);")
 
-        self.gridLayout.addWidget(self.btn_7, 3, 0, 1, 2)
+        self.gridLayout.addWidget(self.btn_7, 3, 0, 1, 1)
 
         self.btn_8 = QPushButton(Form)
         self.btn_8.setObjectName(u"btn_8")
@@ -152,7 +154,7 @@ class Ui_Form(object):
         self.btn_8.setFont(font1)
         self.btn_8.setStyleSheet(u"color: rgb(35, 31, 32);")
 
-        self.gridLayout.addWidget(self.btn_8, 3, 2, 1, 2)
+        self.gridLayout.addWidget(self.btn_8, 3, 1, 1, 3)
 
         self.btn_9 = QPushButton(Form)
         self.btn_9.setObjectName(u"btn_9")
@@ -171,7 +173,12 @@ class Ui_Form(object):
         self.vsplayer.setFont(font2)
         self.vsplayer.setLayoutDirection(Qt.RightToLeft)
 
-        self.gridLayout.addWidget(self.vsplayer, 4, 0, 1, 2)
+        self.gridLayout.addWidget(self.vsplayer, 4, 0, 1, 1)
+
+        self.mov = QLabel(Form)
+        self.mov.setObjectName(u"mov")
+
+        self.gridLayout.addWidget(self.mov, 4, 1, 1, 1)
 
         self.vscomputer = QRadioButton(Form)
         self.vscomputer.setObjectName(u"vscomputer")
@@ -192,7 +199,12 @@ class Ui_Form(object):
         self.restart.setFont(font3)
         self.restart.setStyleSheet(u"color:red")
 
-        self.gridLayout.addWidget(self.restart, 5, 0, 1, 2)
+        self.gridLayout.addWidget(self.restart, 5, 0, 1, 1)
+
+        self.vs = QLabel(Form)
+        self.vs.setObjectName(u"vs")
+
+        self.gridLayout.addWidget(self.vs, 5, 1, 1, 1)
 
         self.about = QPushButton(Form)
         self.about.setObjectName(u"about")
@@ -213,7 +225,7 @@ class Ui_Form(object):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Tick Toc Toe", None))
         self.xsign.setText("")
         self.Xscore.setText(QCoreApplication.translate("Form", u"0", None))
-        self.label_4.setText(QCoreApplication.translate("Form", u"-", None))
+        self.same.setText(QCoreApplication.translate("Form", u"0", None))
         self.Oscore.setText(QCoreApplication.translate("Form", u"0", None))
         self.osign.setText("")
         self.btn_1.setText("")
@@ -226,8 +238,10 @@ class Ui_Form(object):
         self.btn_8.setText("")
         self.btn_9.setText("")
         self.vsplayer.setText(QCoreApplication.translate("Form", u"\u0628\u0627\u0632\u06cc \u062f\u0648 \u0646\u0641\u0631\u0647", None))
+        self.mov.setText("")
         self.vscomputer.setText(QCoreApplication.translate("Form", u"\u0628\u0627\u0632\u06cc \u0628\u0627 \u06a9\u0627\u0645\u067e\u06cc\u0648\u062a\u0631", None))
         self.restart.setText(QCoreApplication.translate("Form", u"\u0634\u0631\u0648\u0639 \u0645\u062c\u062f\u062f \u0628\u0627\u0632\u06cc", None))
+        self.vs.setText("")
         self.about.setText(QCoreApplication.translate("Form", u"\u062f\u0631\u0628\u0627\u0631\u0647 \u0628\u0627\u0632\u06cc", None))
     # retranslateUi
 

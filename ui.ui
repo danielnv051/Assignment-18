@@ -13,7 +13,7 @@
     <x>0</x>
     <y>0</y>
     <width>368</width>
-    <height>337</height>
+    <height>431</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -25,7 +25,7 @@
   <property name="minimumSize">
    <size>
     <width>368</width>
-    <height>337</height>
+    <height>431</height>
    </size>
   </property>
   <property name="baseSize">
@@ -71,6 +71,9 @@
      <property name="layoutDirection">
       <enum>Qt::RightToLeft</enum>
      </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 0, 255);</string>
+     </property>
      <property name="text">
       <string>0</string>
      </property>
@@ -80,15 +83,18 @@
     </widget>
    </item>
    <item row="0" column="2">
-    <widget class="QLabel" name="label_4">
+    <widget class="QLabel" name="same">
      <property name="font">
       <font>
        <family>B Titr</family>
        <pointsize>20</pointsize>
       </font>
      </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 170, 0);</string>
+     </property>
      <property name="text">
-      <string>-</string>
+      <string>0</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -124,7 +130,7 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2">
+   <item row="1" column="0">
     <widget class="QPushButton" name="btn_1">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -143,7 +149,7 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="2" colspan="2">
+   <item row="1" column="1" colspan="3">
     <widget class="QPushButton" name="btn_2">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -187,7 +193,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2">
+   <item row="2" column="0">
     <widget class="QPushButton" name="btn_4">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -209,7 +215,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="2" colspan="2">
+   <item row="2" column="1" colspan="3">
     <widget class="QPushButton" name="btn_5">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -253,7 +259,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2">
+   <item row="3" column="0">
     <widget class="QPushButton" name="btn_7">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -275,7 +281,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="2" colspan="2">
+   <item row="3" column="1" colspan="3">
     <widget class="QPushButton" name="btn_8">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -319,7 +325,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="0" colspan="2">
+   <item row="4" column="0">
     <widget class="QRadioButton" name="vsplayer">
      <property name="font">
       <font>
@@ -332,6 +338,13 @@
      </property>
      <property name="text">
       <string>بازی دو نفره</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QLabel" name="mov">
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </item>
@@ -354,7 +367,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="0" colspan="2">
+   <item row="5" column="0">
     <widget class="QPushButton" name="restart">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -374,6 +387,13 @@
      </property>
      <property name="text">
       <string>شروع مجدد بازی</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QLabel" name="vs">
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </item>
